@@ -280,7 +280,7 @@ $sql10 = mysql_query("SELECT * from employee where experience BETWEEN 19 AND 20"
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <?php if(isset($_REQUEST['type']))
-{?>
+{if($_REQUEST['type']==2){?>
 <script type="text/javascript">
 // Load google charts
 google.charts.load('current', {'packages':['corechart']});
@@ -307,7 +307,7 @@ function drawChart() {
 
 </script>
   
-<?php } else {?>
+<?php } else if($_REQUEST['type']==1) {?>
 <script type="text/javascript">
 // Load google charts
 google.charts.load('current', {'packages':['corechart']});
@@ -339,8 +339,38 @@ function drawChart() {
 
 </script>
 
-<?php } ?>   
+<?php }} else{ ?>   
+<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Task',  'Hours per Day'],
+  ['0-2 Years Experience', <?php echo $row1 ?>],
+  ['2-4 Years Experience', <?php echo $row2 ?>],
+  ['4-6 Years Experience', <?php echo $row3 ?>],
+  ['6-8 Years Experience', <?php echo $row4 ?>],
+  ['8-10 Years Experience', <?php echo $row5 ?>],
+  ['10-12 Years Experience', <?php echo $row6 ?>],
+  ['12-14 Years Experience', <?php echo $row7 ?>],
+  ['14-16 Years Experience', <?php echo $row8 ?>],
+  ['16-18 Years Experience', <?php echo $row9 ?>],
+  ['18-20 Years Experience', <?php echo $row10 ?>],
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'Total Employee   <?php echo $row0 ?>', 'width':750, 'height':400};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+
+</script>
+<?php } ?> 
                 </div>
 
                 <div class="col-lg-3 col-md-6">
