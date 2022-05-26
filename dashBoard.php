@@ -35,6 +35,7 @@ $row0 = mysql_num_rows($sql0);
 
 if(isset($_REQUEST['type']))
 {
+	if($_REQUEST['type']==2){
 	$sql1 = mysql_query("SELECT * FROM employee WHERE experience BETWEEN 0 AND 4");
 
  $row1 = mysql_num_rows($sql1);
@@ -56,6 +57,52 @@ $sql4 = mysql_query("SELECT * from employee where experience BETWEEN 12 AND 16")
 $sql5 = mysql_query("SELECT * from employee where experience BETWEEN 16 AND 20");
 
  $row5 = mysql_num_rows($sql5);
+}
+else if($_REQUEST['type']==1)
+{
+	$sql1 = mysql_query("SELECT * FROM employee WHERE experience BETWEEN 0 AND 2");
+
+ $row1 = mysql_num_rows($sql1);
+
+
+
+$sql2 = mysql_query("SELECT * from employee where experience BETWEEN 3 AND 4");
+
+ $row2 = mysql_num_rows($sql2);
+
+$sql3 = mysql_query("SELECT * from employee where experience BETWEEN 5 AND 6");
+
+ $row3 = mysql_num_rows($sql3);
+
+$sql4 = mysql_query("SELECT * from employee where experience BETWEEN 7 AND 8");
+
+ $row4 = mysql_num_rows($sql4);
+
+$sql5 = mysql_query("SELECT * from employee where experience BETWEEN 9 AND 10");
+
+ $row5 = mysql_num_rows($sql5);
+
+$sql6 = mysql_query("SELECT * from employee where experience BETWEEN 11 AND 12");
+
+ $row6 = mysql_num_rows($sql6);
+
+$sql7 = mysql_query("SELECT * from employee where experience BETWEEN 13 AND 14");
+
+ $row7 = mysql_num_rows($sql7);	
+
+$sql8 = mysql_query("SELECT * from employee where experience BETWEEN 15 AND 16");
+
+ $row8 = mysql_num_rows($sql8);
+
+$sql9 = mysql_query("SELECT * from employee where experience BETWEEN 17 AND 18");
+
+ $row9 = mysql_num_rows($sql9);
+
+$sql10 = mysql_query("SELECT * from employee where experience BETWEEN 19 AND 20");
+
+ $row10 = mysql_num_rows($sql10);
+	
+}
 }
 else{
 
@@ -160,17 +207,22 @@ $sql10 = mysql_query("SELECT * from employee where experience BETWEEN 19 AND 20"
 
                 <div class="row">
 
-                    <div class="col-lg-12">
+                    <div class="col-lg-4">
 
-           <!-- <p align="left">
+      <p align="left">
 <form method="post" >
-From  <?php if(isset($_REQUEST['date1'])){echo $_REQUEST['date1'];}?>: <input type="date" name="date1" value=" " required="required"/>&nbsp;&nbsp;&nbsp;
-To <?php if(isset($_REQUEST['date2'])){echo $_REQUEST['date2'];}?> : <input type="date" name="date2" value=" " required="required"/>                      
-<input type="hidden" name="searching" value="true">
-<input type="submit" value="Search" class="search-button">
-</form>
-</p> -->          
+       <select class="form-control" name="type" id="type" class="span6" onchange="javascript:this.form.submit()" required>
 
+<option value=''>Select Duration</option>
+
+<option value="1" >2 Year Duration </option>
+
+ <option value="2" > 4 Year Duration </option>
+
+ </select>
+</form>
+</p>        
+</div>
 
 
            
@@ -254,7 +306,7 @@ function drawChart() {
 }
 
 </script>
-<a href="dashBoard.php">View in 2 Year Duration</a>    
+  
 <?php } else {?>
 <script type="text/javascript">
 // Load google charts
@@ -286,7 +338,7 @@ function drawChart() {
 }
 
 </script>
-<a href="dashBoard.php?type=2">View in 4 Year Duration</a> 
+
 <?php } ?>   
 
                 </div>
