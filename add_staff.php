@@ -153,6 +153,7 @@ $emailMsg='';
           <div class="col-lg-8"> <br/>
 
           <h3>Add Employee List</h3>
+          <h6 style="text-align:right; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:18px; color:#990000; "><a href="employee.csv" download >Download sample csv</a></h6>
 
             <form method="post"  name="theform" id="theform" autocomplete="off" enctype="multipart/form-data">
 
